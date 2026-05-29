@@ -1,307 +1,94 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diver CPU - About</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Courier New', monospace;
-            background: #0a0a0a;
-            min-height: 100vh;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: flex-end;
-            padding: 20px 60px;
-            background: rgba(0, 0, 0, 0.8);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-        }
-
-        .nav-item {
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 2px;
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
-
-        .nav-item:hover {
-            color: #fff;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-        }
-
-        .content {
-            padding: 120px 60px 60px;
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .title {
-            font-size: 60px;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 
-                0 0 10px #00ffff,
-                0 0 20px #00ffff,
-                0 0 40px #00ffff;
-            letter-spacing: 10px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .gradient-bar {
-            width: 150px;
-            height: 3px;
-            background: linear-gradient(90deg, #ff00ff, #00ffff);
-            margin: 0 auto 50px;
-            border-radius: 2px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-        }
-
-        .about-section {
-            display: flex;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .about-img {
-            width: 200px;
-            height: 200px;
-            border: 2px solid #00ffff;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 60px;
-            color: #00ffff;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h2 {
-            font-size: 28px;
-            color: #ff00ff;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
-        }
-
-        .about-text p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #ccc;
-            margin-bottom: 20px;
-        }
-
-        .skills-section {
-            margin-bottom: 60px;
-        }
-
-        .skills-section h2 {
-            font-size: 28px;
-            color: #00ffff;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-card {
-            background: rgba(0, 255, 255, 0.05);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            background: rgba(0, 255, 255, 0.1);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-        }
-
-        .skill-card h3 {
-            color: #00ffff;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
-
-        .skill-card p {
-            color: #888;
-            font-size: 14px;
-        }
-
-        .stats-section {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 30px;
-            background: rgba(255, 0, 255, 0.05);
-            border: 1px solid rgba(255, 0, 255, 0.2);
-            border-radius: 8px;
-        }
-
-        .stat-card .number {
-            font-size: 48px;
-            font-weight: bold;
-            color: #ff00ff;
-            text-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
-        }
-
-        .stat-card .label {
-            font-size: 14px;
-            color: #888;
-            margin-top: 10px;
-        }
-
-        .background-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.1),
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            pointer-events: none;
-            z-index: 2;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — 晨晨's Blog</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
 </head>
 <body>
-    <div class="background-grid"></div>
-    <div class="scanlines"></div>
-    
-    <div class="navbar">
-        <a href="index.html" class="nav-item">Home</a>
-        <a href="about.html" class="nav-item">About</a>
-        <a href="blog.html" class="nav-item">Blog</a>
-        <a href="projects.html" class="nav-item">Projects</a>
+
+<header>
+  <div class="container">
+    <h1 class="glitch-title">CHEN CHEN</h1>
+    <p>Welcome to My Blog — Explore tutorials, tech articles, and more in this cyberpunk digital realm.</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="categories.html">Categories</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section>
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about-content">
+      <h3>Who am I</h3>
+      <p>
+        你好！我是林世钒，网名<strong>晨晨</strong>，云南大学信息学院 2022 级本科生。
+        这里是我的个人技术博客，记录学习历程中的笔记、实验和项目经验。
+      </p>
+      <p>
+        Currently studying Data Mining and Pattern Recognition, with interests in
+        machine learning, backend development, and DevOps practices.
+      </p>
+
+      <h3>What you'll find here</h3>
+      <ul class="contact-list" style="list-style: none;">
+        <li>• <strong>数据挖掘</strong> — 前馈神经网络、聚类算法的实现与实验</li>
+        <li>• <strong>模式识别</strong> — 感知器、分类算法的原理与代码实现</li>
+        <li>• <strong>Python & PyTorch</strong> — 深度学习框架使用笔记</li>
+        <li>• <strong>DevOps</strong> — Docker、Git、GitHub 协作开发经验</li>
+        <li>• <strong>Database</strong> — SQL Server、MySQL 实践笔记</li>
+      </ul>
+
+      <h3>Tech Stack</h3>
+      <div class="skills-grid">
+        <div class="skill-tag">Python</div>
+        <div class="skill-tag">PyTorch</div>
+        <div class="skill-tag">NumPy</div>
+        <div class="skill-tag">scikit-learn</div>
+        <div class="skill-tag">Docker</div>
+        <div class="skill-tag">Git</div>
+        <div class="skill-tag">GitHub</div>
+        <div class="skill-tag">SQL Server</div>
+        <div class="skill-tag">Java</div>
+        <div class="skill-tag">Azure Data Studio</div>
+        <div class="skill-tag">Linux</div>
+        <div class="skill-tag">Jekyll</div>
+      </div>
+
+      <h3>Currently Learning</h3>
+      <p>
+        深入学习深度学习理论与实践，探索更多机器学习算法及其在真实数据集上的应用。
+        同时在刷 GitHub 开源项目，学习群体协作开发流程。
+      </p>
+
+      <h3>Education</h3>
+      <p>
+        <strong>云南大学</strong> — 信息学院 2022 级本科生<br>
+        2025 春季学期课程：数据挖掘（前馈神经网络 PyTorch+MNIST）、模式识别（感知器算法 Iris）
+      </p>
+
+      <h3>Contact</h3>
+      <ul class="contact-list">
+        <li>• GitHub: <a href="https://github.com" target="_blank">@lsyf2003</a></li>
+        <li>• Email: linshifin@outlook.com</li>
+        <li>• bilibili: <a href="https://bilibili.com" target="_blank">晨晨的个人空间</a></li>
+      </ul>
     </div>
+  </section>
 
-    <div class="content">
-        <h1 class="title">ABOUT ME</h1>
-        <div class="gradient-bar"></div>
-        
-        <div class="about-section">
-            <div class="about-img">D</div>
-            <div class="about-text">
-                <h2>Hi, I'm Diver CPU</h2>
-                <p>
-                    I'm a passionate software engineer with a deep love for coding and technology. 
-                    I enjoy building innovative solutions that solve real-world problems.
-                </p>
-                <p>
-                    With years of experience in software development, I've worked on various 
-                    projects ranging from web applications to mobile apps. My expertise spans 
-                    across multiple programming languages and frameworks.
-                </p>
-                <p>
-                    When I'm not coding, you can find me exploring new technologies, reading 
-                    tech blogs, or working on personal projects.
-                </p>
-            </div>
-        </div>
+</main>
 
-        <div class="skills-section">
-            <h2>SKILLS</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>PYTHON</h3>
-                    <p>Web Development, Data Analysis</p>
-                </div>
-                <div class="skill-card">
-                    <h3>JAVASCRIPT</h3>
-                    <p>Frontend, Node.js</p>
-                </div>
-                <div class="skill-card">
-                    <h3>REACT</h3>
-                    <p>Modern Web Apps</p>
-                </div>
-                <div class="skill-card">
-                    <h3>CSS</h3>
-                    <p>Styling, Animations</p>
-                </div>
-                <div class="skill-card">
-                    <h3>HTML5</h3>
-                    <p>Semantic Markup</p>
-                </div>
-                <div class="skill-card">
-                    <h3>GIT</h3>
-                    <p>Version Control</p>
-                </div>
-            </div>
-        </div>
+<footer>
+  <p>&copy; 2025 <span>Chen Chen</span> — Built with passion in the cyberpunk realm.</p>
+  <p style="margin-top:8px;color:#555;">云南大学 信息学院 2022级</p>
+</footer>
 
-        <div class="stats-section">
-            <div class="stat-card">
-                <div class="number">50+</div>
-                <div class="label">Projects</div>
-            </div>
-            <div class="stat-card">
-                <div class="number">200+</div>
-                <div class="label">Articles</div>
-            </div>
-            <div class="stat-card">
-                <div class="number">10K+</div>
-                <div class="label">Followers</div>
-            </div>
-            <div class="stat-card">
-                <div class="number">5</div>
-                <div class="label">Years Experience</div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>

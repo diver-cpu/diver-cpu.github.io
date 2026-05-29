@@ -1,255 +1,130 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diver CPU - Personal Website</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Courier New', monospace;
-            background: #0a0a0a;
-            min-height: 100vh;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: flex-end;
-            padding: 20px 60px;
-            background: rgba(0, 0, 0, 0.8);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-        }
-
-        .nav-item {
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 2px;
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
-
-        .nav-item:hover {
-            color: #fff;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding-top: 80px;
-            position: relative;
-        }
-
-        .hero-content {
-            text-align: center;
-            z-index: 1;
-        }
-
-        .greeting {
-            font-size: 24px;
-            color: #00ffff;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
-            margin-bottom: 20px;
-            letter-spacing: 8px;
-            animation: fadeIn 2s ease-out;
-        }
-
-        .name {
-            font-size: 80px;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 
-                0 0 10px #00ffff,
-                0 0 20px #00ffff,
-                0 0 40px #00ffff,
-                0 0 80px #00ffff;
-            letter-spacing: 20px;
-            margin-bottom: 30px;
-            animation: titleGlow 3s ease-in-out infinite alternate;
-        }
-
-        .subtitle {
-            font-size: 28px;
-            color: #ff00ff;
-            text-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
-            letter-spacing: 5px;
-            margin-bottom: 40px;
-        }
-
-        .description {
-            font-size: 18px;
-            color: #888;
-            max-width: 600px;
-            line-height: 1.8;
-            margin-bottom: 60px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border: 2px solid #00ffff;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #00ffff;
-            text-decoration: none;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-
-        .social-link:hover {
-            background: rgba(0, 255, 255, 0.2);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-            transform: translateY(-5px);
-        }
-
-        @keyframes titleGlow {
-            0% {
-                text-shadow: 
-                    0 0 10px #00ffff,
-                    0 0 20px #00ffff,
-                    0 0 40px #00ffff;
-            }
-            100% {
-                text-shadow: 
-                    0 0 20px #00ffff,
-                    0 0 40px #00ffff,
-                    0 0 80px #00ffff,
-                    0 0 120px #00ffff;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .background-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.1),
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .cursor {
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-20px); }
-            60% { transform: translateX(-50%) translateY(-10px); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>晨晨's Blog — 数据挖掘 & 模式识别</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
 </head>
 <body>
-    <div class="background-grid"></div>
-    <div class="scanlines"></div>
-    
-    <div class="navbar">
-        <a href="#about" class="nav-item">About</a>
-        <a href="#blog" class="nav-item">Blog</a>
-        <a href="#projects" class="nav-item">Projects</a>
-        <a href="#contact" class="nav-item">Contact</a>
-    </div>
 
-    <div class="hero">
-        <div class="hero-content">
-            <div class="greeting">HELLO, WORLD.</div>
-            <h1 class="name">DIVER CPU</h1>
-            <div class="subtitle">SOFTWARE ENGINEER <span class="cursor">_</span></div>
-            <p class="description">
-                Passionate about creating innovative solutions and exploring new technologies.
-                Building digital experiences that inspire and empower.
-            </p>
-            <div class="social-links">
-                <a href="https://github.com/diver-cpu" target="_blank" class="social-link">G</a>
-                <a href="https://twitter.com" target="_blank" class="social-link">T</a>
-                <a href="mailto:hello@divercpu.dev" class="social-link">M</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div style="width: 30px; height: 50px; border: 2px solid #00ffff; border-radius: 25px; display: flex; justify-content: center; padding-top: 10px;">
-                <div style="width: 6px; height: 15px; background: #00ffff; border-radius: 3px; animation: scrollDown 2s infinite;"></div>
-            </div>
-        </div>
-    </div>
+<header>
+  <div class="container">
+    <h1 class="glitch-title">CHEN CHEN</h1>
+    <p>Welcome to My Blog — Explore tutorials, tech articles, and more in this cyberpunk digital realm.</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="categories.html">Categories</a>
+    </nav>
+  </div>
+</header>
 
-    <style>
-        @keyframes scrollDown {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(20px); opacity: 0; }
-        }
-    </style>
+<main class="container">
+
+  <section>
+    <h2 class="section-title">Latest Posts</h2>
+
+    <div class="post-list">
+
+      <!-- 文章1 -->
+      <article class="post-card">
+        <h3>K-Means 与二分K-Means 聚类算法实现</h3>
+        <div class="post-meta">
+          <span>2025-05-15</span>
+          <span>数据挖掘</span>
+        </div>
+        <p class="post-excerpt">
+          实现K-均值聚类算法与二分K-均值聚类算法，在鸢尾花数据集上进行应用。对比两种算法的迭代过程与聚类质量，使用轮廓系数、CH指数、DB指数、ARI、NMI等指标进行评估。实验结果表明K-Means在鸢尾花数据集上各项指标均优于二分K-Means。
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">K-Means</span>
+          <span class="tag">Iris</span>
+        </div>
+      </article>
+
+      <!-- 文章2 -->
+      <article class="post-card">
+        <h3>前馈神经网络实现 MNIST 手写数字识别</h3>
+        <div class="post-meta">
+          <span>2025-04-20</span>
+          <span>数据挖掘</span>
+        </div>
+        <p class="post-excerpt">
+          使用 PyTorch 从零实现前馈神经网络，在 MNIST 手写数字数据集上进行训练与测试。网络结构包含输入层、隐藏层和输出层，采用 ReLU 激活函数和 CrossEntropyLoss 损失函数，最终模型识别准确率达到 97% 以上。
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">MNIST</span>
+          <span class="tag">Deep Learning</span>
+        </div>
+      </article>
+
+      <!-- 文章3 -->
+      <article class="post-card">
+        <h3>感知器算法实现 — 鸢尾花数据集分类</h3>
+        <div class="post-meta">
+          <span>2025-04-05</span>
+          <span>模式识别</span>
+        </div>
+        <p class="post-excerpt">
+          实现感知器（Perceptron）算法，分别使用学习率 c=1 和 c=0.5 在鸢尾花数据集（Setosa 与 Versicolour 二分类）上进行实验。记录不同学习率下的收敛迭代次数，分析学习率对感知器收敛速度的影响。
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Perceptron</span>
+          <span class="tag">Iris</span>
+          <span class="tag">Pattern Recognition</span>
+        </div>
+      </article>
+
+      <!-- 文章4 -->
+      <article class="post-card">
+        <h3>GitHub 群体开发实战 — PR 与 Code Review 流程</h3>
+        <div class="post-meta">
+          <span>2025-03-15</span>
+          <span>DevOps</span>
+        </div>
+        <p class="post-excerpt">
+          记录参与开源项目群体开发的完整流程，包括 Fork 仓库、创建分支、提交 Pull Request、接受 Code Review、合并分支等环节。总结 Git 工作流与 GitHub PR 规范，以及常见问题的解决方法。
+        </p>
+        <div class="tags">
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">DevOps</span>
+        </div>
+      </article>
+
+      <!-- 文章5 -->
+      <article class="post-card">
+        <h3>Docker 容器化部署实战入门</h3>
+        <div class="post-meta">
+          <span>2025-03-01</span>
+          <span>DevOps</span>
+        </div>
+        <p class="post-excerpt">
+          从零学习 Docker 容器技术，掌握镜像构建、容器运行、数据卷挂载、Docker Compose 多容器编排等核心操作。完成 MySQL、Nginx、Python Web 服务等典型场景的容器化部署实践。
+        </p>
+        <div class="tags">
+          <span class="tag">Docker</span>
+          <span class="tag">Container</span>
+          <span class="tag">DevOps</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 <span>Chen Chen</span> — Built with passion in the cyberpunk realm.</p>
+  <p style="margin-top:8px;color:#555;">云南大学 信息学院 2022级</p>
+</footer>
+
 </body>
 </html>
