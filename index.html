@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APPLES - 霓虹风格博客</title>
+    <title>Diver CPU - Personal Website</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Courier New', monospace;
             background: #0a0a0a;
             min-height: 100vh;
             color: #fff;
@@ -21,89 +21,113 @@
 
         .navbar {
             display: flex;
-            gap: 0;
-            background: rgba(0, 0, 0, 0.9);
-            position: relative;
-            z-index: 1;
-            border-bottom: 2px solid #00ffff;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            justify-content: flex-end;
+            padding: 20px 60px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
         }
 
         .nav-item {
-            position: relative;
-            padding: 20px 40px;
-            font-size: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
             font-weight: bold;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
-            letter-spacing: 3px;
-            flex: 1;
-            text-align: center;
-        }
-
-        .nav-item:nth-child(1) {
+            letter-spacing: 2px;
             color: #00ffff;
-            text-shadow: 
-                0 0 10px #00ffff,
-                0 0 20px #00ffff,
-                0 0 30px #00ffff;
-            background: rgba(0, 255, 255, 0.05);
-        }
-
-        .nav-item:nth-child(2) {
-            color: #ff00ff;
-            text-shadow: 
-                0 0 10px #ff00ff,
-                0 0 20px #ff00ff,
-                0 0 30px #ff00ff;
-            background: rgba(255, 0, 255, 0.05);
-        }
-
-        .nav-item:nth-child(3) {
-            color: #ffff00;
-            text-shadow: 
-                0 0 10px #ffff00,
-                0 0 20px #ffff00,
-                0 0 30px #ffff00;
-            background: rgba(255, 255, 0, 0.05);
-        }
-
-        .nav-item:nth-child(4) {
-            color: #ff6b6b;
-            text-shadow: 
-                0 0 10px #ff6b6b,
-                0 0 20px #ff6b6b,
-                0 0 30px #ff6b6b;
-            background: rgba(255, 107, 107, 0.05);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
         .nav-item:hover {
-            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
         }
 
-        .content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 40px;
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 80px;
             position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
             z-index: 1;
         }
 
-        .title {
-            font-size: 100px;
-            font-weight: bold;
-            text-transform: uppercase;
+        .greeting {
+            font-size: 24px;
             color: #00ffff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .name {
+            font-size: 80px;
+            font-weight: bold;
+            color: #fff;
             text-shadow: 
                 0 0 10px #00ffff,
                 0 0 20px #00ffff,
                 0 0 40px #00ffff,
-                0 0 80px #00ffff,
-                0 0 120px #00ffff;
-            letter-spacing: 15px;
-            margin-bottom: 20px;
+                0 0 80px #00ffff;
+            letter-spacing: 20px;
+            margin-bottom: 30px;
             animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            font-size: 28px;
+            color: #ff00ff;
+            text-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+            letter-spacing: 5px;
+            margin-bottom: 40px;
+        }
+
+        .description {
+            font-size: 18px;
+            color: #888;
+            max-width: 600px;
+            line-height: 1.8;
+            margin-bottom: 60px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #00ffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #00ffff;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .social-link:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+            transform: translateY(-5px);
         }
 
         @keyframes titleGlow {
@@ -111,62 +135,26 @@
                 text-shadow: 
                     0 0 10px #00ffff,
                     0 0 20px #00ffff,
-                    0 0 40px #00ffff,
-                    0 0 80px #00ffff;
+                    0 0 40px #00ffff;
             }
             100% {
                 text-shadow: 
-                    0 0 15px #00ffff,
-                    0 0 30px #00ffff,
-                    0 0 60px #00ffff,
-                    0 0 120px #00ffff,
-                    0 0 160px #00ffff;
+                    0 0 20px #00ffff,
+                    0 0 40px #00ffff,
+                    0 0 80px #00ffff,
+                    0 0 120px #00ffff;
             }
         }
 
-        .gradient-bar {
-            width: 200px;
-            height: 4px;
-            background: linear-gradient(90deg, #ff00ff, #00ffff);
-            margin-bottom: 40px;
-            border-radius: 2px;
-            box-shadow: 
-                0 0 10px #ff00ff,
-                0 0 20px #00ffff;
-        }
-
-        .meta {
-            font-size: 18px;
-            color: #888;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
-
-        .meta .date {
-            color: #fff;
-        }
-
-        .meta .author {
-            color: #00ffff;
-            text-shadow: 
-                0 0 5px #00ffff,
-                0 0 10px #00ffff;
-        }
-
-        .article-content {
-            font-size: 20px;
-            line-height: 1.8;
-            color: #ccc;
-        }
-
-        .article-content p {
-            margin-bottom: 25px;
-        }
-
-        .article-content p:first-child {
-            font-size: 22px;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .background-grid {
@@ -178,7 +166,7 @@
             background-image: 
                 linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background-size: 40px 40px;
             pointer-events: none;
             z-index: 0;
         }
@@ -191,49 +179,77 @@
             height: 100%;
             background: repeating-linear-gradient(
                 0deg,
-                rgba(0, 0, 0, 0.15),
-                rgba(0, 0, 0, 0.15) 1px,
+                rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.1) 1px,
                 transparent 1px,
-                transparent 3px
+                transparent 2px
             );
             pointer-events: none;
             z-index: 2;
         }
 
-        .vignette {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
-            pointer-events: none;
-            z-index: 1;
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
         }
     </style>
 </head>
 <body>
     <div class="background-grid"></div>
-    <div class="vignette"></div>
     <div class="scanlines"></div>
     
     <div class="navbar">
-        <div class="nav-item">MY-HOME</div>
-        <div class="nav-item">MY-ABOUT</div>
-        <div class="nav-item">MY-BLOG</div>
-        <div class="nav-item">MY-STAFF</div>
+        <a href="#about" class="nav-item">About</a>
+        <a href="#blog" class="nav-item">Blog</a>
+        <a href="#projects" class="nav-item">Projects</a>
+        <a href="#contact" class="nav-item">Contact</a>
     </div>
 
-    <div class="content">
-        <h1 class="title">APPLES</h1>
-        <div class="gradient-bar"></div>
-        <div class="meta">
-            <span class="date">21 Aug 2018</span> - <span class="author">Jill Smith</span>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="greeting">HELLO, WORLD.</div>
+            <h1 class="name">DIVER CPU</h1>
+            <div class="subtitle">SOFTWARE ENGINEER <span class="cursor">_</span></div>
+            <p class="description">
+                Passionate about creating innovative solutions and exploring new technologies.
+                Building digital experiences that inspire and empower.
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/diver-cpu" target="_blank" class="social-link">G</a>
+                <a href="https://twitter.com" target="_blank" class="social-link">T</a>
+                <a href="mailto:hello@divercpu.dev" class="social-link">M</a>
+            </div>
         </div>
-        <div class="article-content">
-            <p>An apple is a sweet, edible fruit produced by an apple tree.</p>
-            <p>Apple trees are cultivated worldwide, and are the most widely grown species in the genus Malus. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found today. Apples have been grown for thousands of years in Asia and Europe, and were brought to North America by European colonists.</p>
+        <div class="scroll-indicator">
+            <div style="width: 30px; height: 50px; border: 2px solid #00ffff; border-radius: 25px; display: flex; justify-content: center; padding-top: 10px;">
+                <div style="width: 6px; height: 15px; background: #00ffff; border-radius: 3px; animation: scrollDown 2s infinite;"></div>
+            </div>
         </div>
     </div>
+
+    <style>
+        @keyframes scrollDown {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(20px); opacity: 0; }
+        }
+    </style>
 </body>
 </html>

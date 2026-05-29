@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLOG - 霓虹风格</title>
+    <title>Diver CPU - Blog</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Courier New', monospace;
             background: #0a0a0a;
             min-height: 100vh;
             color: #fff;
@@ -21,159 +21,115 @@
 
         .navbar {
             display: flex;
-            gap: 0;
-            background: rgba(0, 0, 0, 0.9);
-            position: relative;
-            z-index: 1;
-            border-bottom: 2px solid #ffff00;
-            box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
+            justify-content: flex-end;
+            padding: 20px 60px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
         }
 
         .nav-item {
-            position: relative;
-            padding: 20px 40px;
-            font-size: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
             font-weight: bold;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
-            letter-spacing: 3px;
-            flex: 1;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        .nav-item:nth-child(1) {
+            letter-spacing: 2px;
             color: #00ffff;
-            text-shadow: 
-                0 0 10px #00ffff,
-                0 0 20px #00ffff,
-                0 0 30px #00ffff;
-            background: rgba(0, 255, 255, 0.05);
-        }
-
-        .nav-item:nth-child(2) {
-            color: #ff00ff;
-            text-shadow: 
-                0 0 10px #ff00ff,
-                0 0 20px #ff00ff,
-                0 0 30px #ff00ff;
-            background: rgba(255, 0, 255, 0.05);
-        }
-
-        .nav-item:nth-child(3) {
-            color: #ffff00;
-            text-shadow: 
-                0 0 10px #ffff00,
-                0 0 20px #ffff00,
-                0 0 30px #ffff00;
-            background: rgba(255, 255, 0, 0.15);
-        }
-
-        .nav-item:nth-child(4) {
-            color: #ff6b6b;
-            text-shadow: 
-                0 0 10px #ff6b6b,
-                0 0 20px #ff6b6b,
-                0 0 30px #ff6b6b;
-            background: rgba(255, 107, 107, 0.05);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
         .nav-item:hover {
-            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
         }
 
         .content {
-            max-width: 1200px;
+            padding: 120px 60px 60px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 60px 40px;
             position: relative;
             z-index: 1;
         }
 
         .title {
-            font-size: 100px;
+            font-size: 60px;
             font-weight: bold;
-            text-transform: uppercase;
-            color: #ffff00;
+            color: #fff;
             text-shadow: 
-                0 0 10px #ffff00,
-                0 0 20px #ffff00,
-                0 0 40px #ffff00,
-                0 0 80px #ffff00,
-                0 0 120px #ffff00;
-            letter-spacing: 15px;
-            margin-bottom: 20px;
-            animation: titleGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes titleGlow {
-            0% {
-                text-shadow: 
-                    0 0 10px #ffff00,
-                    0 0 20px #ffff00,
-                    0 0 40px #ffff00,
-                    0 0 80px #ffff00;
-            }
-            100% {
-                text-shadow: 
-                    0 0 15px #ffff00,
-                    0 0 30px #ffff00,
-                    0 0 60px #ffff00,
-                    0 0 120px #ffff00,
-                    0 0 160px #ffff00;
-            }
+                0 0 10px #00ffff,
+                0 0 20px #00ffff,
+                0 0 40px #00ffff;
+            letter-spacing: 10px;
+            margin-bottom: 40px;
+            text-align: center;
         }
 
         .gradient-bar {
-            width: 200px;
-            height: 4px;
-            background: linear-gradient(90deg, #ff00ff, #ffff00);
-            margin-bottom: 40px;
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            margin: 0 auto 50px;
             border-radius: 2px;
-            box-shadow: 
-                0 0 10px #ff00ff,
-                0 0 20px #ffff00;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
         }
 
-        .blog-list {
+        .blog-posts {
             display: flex;
             flex-direction: column;
             gap: 30px;
         }
 
         .blog-card {
-            background: rgba(255, 255, 0, 0.05);
-            border: 1px solid #ffff00;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
             padding: 30px;
-            border-radius: 8px;
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .blog-card:hover {
-            background: rgba(255, 255, 0, 0.1);
-            box-shadow: 0 0 30px rgba(255, 255, 0, 0.3);
-            transform: translateX(10px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            border-color: #00ffff;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            color: #888;
+            font-size: 14px;
         }
 
         .blog-title {
             font-size: 28px;
-            color: #ffff00;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px #ffff00;
-        }
-
-        .blog-meta {
-            font-size: 14px;
-            color: #888;
+            color: #00ffff;
             margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
         .blog-excerpt {
             font-size: 16px;
-            color: #aaa;
+            color: #ccc;
             line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: #ff00ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            text-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
         }
 
         .background-grid {
@@ -183,9 +139,9 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(255, 255, 0, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 0, 0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
+                linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
             pointer-events: none;
             z-index: 0;
         }
@@ -198,57 +154,60 @@
             height: 100%;
             background: repeating-linear-gradient(
                 0deg,
-                rgba(0, 0, 0, 0.15),
-                rgba(0, 0, 0, 0.15) 1px,
+                rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.1) 1px,
                 transparent 1px,
-                transparent 3px
+                transparent 2px
             );
             pointer-events: none;
             z-index: 2;
-        }
-
-        .vignette {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
-            pointer-events: none;
-            z-index: 1;
         }
     </style>
 </head>
 <body>
     <div class="background-grid"></div>
-    <div class="vignette"></div>
     <div class="scanlines"></div>
     
     <div class="navbar">
-        <a href="home.html" class="nav-item">MY-HOME</a>
-        <a href="about.html" class="nav-item">MY-ABOUT</a>
-        <a href="blog.html" class="nav-item">MY-BLOG</a>
-        <a href="staff.html" class="nav-item">MY-STAFF</a>
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="blog.html" class="nav-item">Blog</a>
+        <a href="projects.html" class="nav-item">Projects</a>
     </div>
 
     <div class="content">
         <h1 class="title">BLOG</h1>
         <div class="gradient-bar"></div>
-        <div class="blog-list">
-            <div class="blog-card" onclick="location.href='apples.html'">
+        
+        <div class="blog-posts">
+            <div class="blog-card" onclick="window.location.href='apples.html'">
+                <div class="blog-meta">
+                    <span>21 Aug 2018</span>
+                    <span>Jill Smith</span>
+                </div>
                 <h2 class="blog-title">APPLES</h2>
-                <div class="blog-meta">21 Aug 2018 - Jill Smith</div>
-                <p class="blog-excerpt">An apple is a sweet, edible fruit produced by an apple tree. Apple trees are cultivated worldwide...</p>
+                <p class="blog-excerpt">An apple is a sweet, edible fruit produced by an apple tree. Apple trees are cultivated worldwide, and are the most widely grown species in the genus Malus...</p>
+                <a href="apples.html" class="read-more">READ MORE →</a>
             </div>
+
             <div class="blog-card">
+                <div class="blog-meta">
+                    <span>20 Aug 2018</span>
+                    <span>Jill Smith</span>
+                </div>
                 <h2 class="blog-title">BANANAS</h2>
-                <div class="blog-meta">20 Aug 2018 - Ted Doe</div>
-                <p class="blog-excerpt">A banana is an elongated, edible fruit – botanically a berry – produced by several kinds of large herbaceous...</p>
+                <p class="blog-excerpt">Bananas are a fruit with a rich nutritional profile. They are a great source of potassium, vitamin B6, and dietary fiber...</p>
+                <a href="#" class="read-more">READ MORE →</a>
             </div>
+
             <div class="blog-card">
+                <div class="blog-meta">
+                    <span>19 Aug 2018</span>
+                    <span>Jill Smith</span>
+                </div>
                 <h2 class="blog-title">KIWIFRUIT</h2>
-                <div class="blog-meta">22 Aug 2018 - Jill Smith</div>
-                <p class="blog-excerpt">Kiwifruit or Chinese gooseberry is the edible berry of several species of woody vines in the genus Actinidia...</p>
+                <p class="blog-excerpt">Kiwifruit is a small fruit with fuzzy brown skin and bright green flesh. It's packed with vitamin C, vitamin K, and antioxidants...</p>
+                <a href="#" class="read-more">READ MORE →</a>
             </div>
         </div>
     </div>
