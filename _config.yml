@@ -1,0 +1,11 @@
+title: 我的技术博客
+description: 基于 Jekyll 和 GitHub Pages 搭建的个人博客
+author: diver-cpu
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# 博客地址
+url: "https://diver-cpu.github.io"
+baseurl: ""
